@@ -4,3 +4,7 @@ bool gfx::Renderer::Init() {
 
     return true;
 }
+
+void gfx::Renderer::Draw() {
+
+}

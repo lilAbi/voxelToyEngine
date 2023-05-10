@@ -2,40 +2,50 @@
 
 bool core::Application::Init() {
 
-    std::cout << "Application Init \n";
-
     //set up window
     if(!window.Init()){
-        std::cout << "Window did not init \n";
+        std::cout << "Window did not init\n";
         return false;
     }
 
     //set up renderer
+    if(!renderer.Init()){
+        std::cout << "Renderer did not init\n";
+        return false;
+    }
 
     return true;
 }
 
 void core::Application::Run() {
 
-    while (!glfwWindowShouldClose(window.GetWindowPtr()))
-    {
-        // input
-        // -----
+    while (!glfwWindowShouldClose(window.GetWindowPtr())) {
 
-        // render
-        // ------
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
-        glfwSwapBuffers(window.GetWindowPtr());
-        glfwPollEvents();
+        PreUpdate();
+        Update();
+        PostUpdate();
     }
 
 }
 
+//clean up resources for a safe exit
 void core::Application::CleanUp() {
 
+}
+
+void core::Application::PreUpdate() {
+
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+}
+
+void core::Application::Update() {
+
+}
+
+void core::Application::PostUpdate() {
+
+    glfwSwapBuffers(window.GetWindowPtr());
+    glfwPollEvents();
 }

@@ -11,15 +11,15 @@ namespace core {
 
     class Window {
     public:
-         Window() = default;
-         ~Window() = default;
+        Window() = default;
+        ~Window() = default;
 
-         bool Init();
+        bool Init();
 
-        inline GLFWwindow* GetWindowPtr() { return windowPtr.get();}
+        inline GLFWwindow* GetWindowPtr() {return windowPtr.get();}
 
     private:
-        //custom delete class function object
+        //custom delete class function object for GLFW
         struct DestructGLFWPtr{
             void operator()(GLFWwindow* ptr){
                 glfwDestroyWindow(ptr);
@@ -28,10 +28,7 @@ namespace core {
 
     private:
         std::unique_ptr<GLFWwindow, DestructGLFWPtr> windowPtr{};
-
-
     };
-
 }
 
 

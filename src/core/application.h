@@ -5,13 +5,12 @@
 #include <graphics/renderer.h>
 #include <iostream>
 
-namespace core {
+/*
+ * the application class is responsible for managing the internal engines that
+ * make up the game.
+ */
 
-    enum class ApplicationState{
-        MAIN_MENU,      //represents the menu main to play or go into settings, and the default state of the application upon startup
-        GAME,           //playing the actual game
-        SETTING,        //edit settings
-    };
+namespace core {
 
     class Application {
     public:
@@ -27,12 +26,17 @@ namespace core {
         //clean up the application for a safe shut down
         void CleanUp();
 
+    private:
+        inline void PreUpdate();
+        inline void Update();
+        inline void PostUpdate();
 
     private:
         //current state of the game
-        ApplicationState appState{ApplicationState::MAIN_MENU};
         core::Window window;
         gfx::Renderer renderer;
+        //gameEngine game;
+        //
     };
 
 }

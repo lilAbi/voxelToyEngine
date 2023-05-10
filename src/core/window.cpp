@@ -1,7 +1,6 @@
 #include "window.h"
 
 bool core::Window::Init() {
-
     //initialize glfw and give context for our window properties
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -10,8 +9,6 @@ bool core::Window::Init() {
 
     //raw ptr to a glfw window object
     auto* glfwWinPtr = glfwCreateWindow(1920, 1080, "Voxel-Tech", NULL, NULL);
-
-    std::cout << "works up to here 1 \n";
 
     //test case to see if window is successfully constructed
     if(!glfwWinPtr){
@@ -28,10 +25,11 @@ bool core::Window::Init() {
         return false;
     }
 
+    //set the view port
+    glViewport(0, 0, 1920, 1080);
 
+    //let unique ptr hold the ptr object
     windowPtr.reset(glfwWinPtr);
-
-    //glViewport(0, 0, 1920, 1080);
 
     return true;
 }

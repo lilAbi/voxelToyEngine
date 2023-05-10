@@ -8,7 +8,7 @@ namespace gfx{
     public:
         bool Init();
 
-        void Draw(){};
+        void Draw();
 
     private:
     };
