@@ -14,6 +14,9 @@ bool core::Application::Init() {
         return false;
     }
 
+
+    //TODO: write code to setup a worldbuilder object and build a world$
+
     return true;
 }
 
@@ -21,31 +24,11 @@ void core::Application::Run() {
 
     while (!glfwWindowShouldClose(window.GetWindowPtr())) {
 
-        PreUpdate();
-        Update();
-        PostUpdate();
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window.GetWindowPtr());
+        glfwPollEvents();
     }
 
-}
-
-//clean up resources for a safe exit
-void core::Application::CleanUp() {
-
-}
-
-void core::Application::PreUpdate() {
-
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-}
-
-void core::Application::Update() {
-
-}
-
-void core::Application::PostUpdate() {
-
-    glfwSwapBuffers(window.GetWindowPtr());
-    glfwPollEvents();
 }

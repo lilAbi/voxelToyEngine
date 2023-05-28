@@ -4,8 +4,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(src)
 
-add_subdirectory(lib)
-
 #find and include glfw library from conan toolchain
 find_package(glfw3 REQUIRED)
 include_directories(${glfw3_INCLUDE_DIR})
@@ -14,10 +12,12 @@ include_directories(${glfw3_INCLUDE_DIR})
 find_package(imgui REQUIRED)
 include_directories(${imgui_INCLUDE_DIR})
 
+add_subdirectory(lib)
+
 file(GLOB SRC_FILES CONFIGURE_DEPENDS
         ${PROJECT_SOURCE_DIR}/src/main.cpp
         ${PROJECT_SOURCE_DIR}/src/*/*.cpp)
 
-add_executable(toyGameEngine ${SRC_FILES})
+add_executable(toyGameEngine ${SRC_FILES} )
 
-target_link_libraries(toyGameEngine ${glfw3_LIBRARIES} glad)
+target_link_libraries(toyGameEngine ${glfw3_LIBRARIES} glad FastNoise2 imgui_backends ${imgui_LIBRARIES})

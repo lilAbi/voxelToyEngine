@@ -16,7 +16,7 @@ namespace core {
 
         bool Init();
 
-        inline GLFWwindow* GetWindowPtr() {return windowPtr.get();}
+        GLFWwindow* GetWindowPtr() {return windowPtr.get();}
 
     private:
         //custom delete class function object for GLFW
